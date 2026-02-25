@@ -16,7 +16,6 @@
             --bg-dark: #1e1e1e;
             --bg-darker: #252526;
             --bg-sidebar: #252526;
-            --bg-activity: #333333;
             --bg-editor: #1e1e1e;
             --text-primary: #cccccc;
             --text-secondary: #858585;
@@ -983,7 +982,7 @@
 </code></pre>
 
 <h2>💡 Philosophy</h2>
-<p>I believe in owning projects end-to-end — from architecture through to production. I'm never satisfied until the root cause is truly understood.</p>
+<p>I believe in owning projects end-to-end — from architecture through to production. I'm never satisfied until root cause is truly understood.</p>
 </div>`,
 
             about: `<div class="code-line"><span class="line-number">1</span><span class="line-content"><span class="comment">// About Me - System Profile</span></span></div>
@@ -993,7 +992,7 @@
 <div class="code-line"><span class="line-number">5</span><span class="line-content">    <span class="property">experience</span>: <span class="string">"10+ years"</span>,</span></div>
 <div class="code-line"><span class="line-number">6</span><span class="line-content">    <span class="property">location</span>: <span class="string">"Qiryat Yam, Israel"</span>,</span></div>
 <div class="code-line"><span class="line-number">7</span><span class="line-content">    </span></div>
-<div class="code-line"><span class="line-number">8</span><span class="line-content">    <span class="property">philosophy</span>: <span class="function">() =></span> {</span></div>
+<div class="code-line"><span class="line-number">8</span><span class="line-content">    <span class="property">philosophy</span>: <span class="keyword">function</span>() {</span></div>
 <div class="code-line"><span class="line-number">9</span><span class="line-content">        <span class="keyword">return</span> <span class="string">"Own it end-to-end. From architecture through to production."</span>;</span></div>
 <div class="code-line"><span class="line-number">10</span><span class="line-content">    },</span></div>
 <div class="code-line"><span class="line-number">11</span><span class="line-content">    </span></div>
@@ -1103,16 +1102,16 @@
 <div class="code-line"><span class="line-number">16</span><span class="line-content"></span></div>
 <div class="code-line"><span class="line-number">17</span><span class="line-content"></span></div>
 <div class="code-line"><span class="line-number">18</span><span class="line-content"><span class="keyword">function</span> <span class="function">sendMessage</span>(<span class="variable">message</span>) {</span></div>
-<div class="code-line"><span class="line-number">19</span><span class="line-content">    <span class="keyword">return</span> <span class="string">\`Send to: \${contact.email}</span><span class="string">\\n</span></span></div>
-<div class="code-line"><span class="line-number">20</span><span class="line-content"><span class="string">            Message: \${message}</span><span class="string">\\n</span></span></div>
-<div class="code-line"><span class="line-number">21</span><span class="line-content"><span class="string">            Response time: ~24h</span><span class="string">\`;</span></span></div>
+<div class="code-line"><span class="line-number">19</span><span class="line-content">    <span class="keyword">return</span> <span class="string">`Send to: ${contact.email}</span><span class="string">\\n</span></span></div>
+<div class="code-line"><span class="line-number">20</span><span class="line-content"><span class="string">            Message: ${message}</span><span class="string">\\n</span></span></div>
+<div class="code-line"><span class="line-number">21</span><span class="line-content"><span class="string">            Response time: ~24h</span><span class="string">`;</span></span></div>
 <div class="code-line"><span class="line-number">22</span><span class="line-content">}</span></div>
 <div class="code-line"><span class="line-number">23</span><span class="line-content"></span></div>
 <div class="code-line"><span class="line-number">24</span><span class="line-content"></span></div>
 <div class="code-line"><span class="line-number">25</span><span class="line-content"><span class="comment">// Quick connect links</span></span></div>
 <div class="code-line"><span class="line-number">26</span><span class="line-content"><span class="keyword">const</span> <span class="variable">links</span> = [</span></div>
-<div class="code-line"><span class="line-number">27</span><span class="line-content">    <span class="string">\`mailto:\${contact.email}\`</span>,</span></div>
-<div class="code-line"><span class="line-number">28</span><span class="line-content">    <span class="string">\`https://\${contact.linkedin}\`</span></span></div>
+<div class="code-line"><span class="line-number">27</span><span class="line-content">    <span class="string">`mailto:${contact.email}`</span>,</span></div>
+<div class="code-line"><span class="line-number">28</span><span class="line-content">    <span class="string">`https://${contact.linkedin}`</span></span></div>
 <div class="code-line"><span class="line-number">29</span><span class="line-content">];</span></div>
 <div class="code-line"><span class="line-number">30</span><span class="line-content"></span></div>
 <div class="code-line"><span class="line-number">31</span><span class="line-content"><span class="keyword">export</span> <span class="keyword">default</span> contact;</span></div>`,
@@ -1150,8 +1149,8 @@
         let activeFile = null;
 
         function toggleFolder(folderName) {
-            const contents = document.getElementById(`contents-${folderName}`);
-            const arrow = document.getElementById(`arrow-${folderName}`);
+            const contents = document.getElementById('contents-' + folderName);
+            const arrow = document.getElementById('arrow-' + folderName);
             
             if (contents.classList.contains('expanded')) {
                 contents.classList.remove('expanded');
@@ -1186,10 +1185,10 @@
             }
 
             // Update file tree
-            document.querySelectorAll('.file').forEach(file => {
+            document.querySelectorAll('.file').forEach(function(file) {
                 file.classList.remove('active');
             });
-            const activeFileElement = document.querySelector(`.file[data-file="${filename}"]`);
+            const activeFileElement = document.querySelector('.file[data-file="' + filename + '"]');
             if (activeFileElement) {
                 activeFileElement.classList.add('active');
             }
@@ -1201,10 +1200,10 @@
             }
 
             // Update active tab
-            document.querySelectorAll('.tab').forEach(tab => {
+            document.querySelectorAll('.tab').forEach(function(tab) {
                 tab.classList.remove('active');
             });
-            document.querySelector(`.tab[data-file="${filename}"]`).classList.add('active');
+            document.querySelector('.tab[data-file="' + filename + '"]').classList.add('active');
 
             // Show file content
             editorContent.innerHTML = fileContents[filename];
@@ -1249,14 +1248,8 @@
             const tab = document.createElement('div');
             tab.className = 'tab active';
             tab.dataset.file = filename;
-            tab.innerHTML = `
-                <svg class="tab-icon ${iconMap[filename]}" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M2 2v12h12V4l-2-2H2zm10 10H4V4h6v2h2v6z"/>
-                </svg>
-                <span class="tab-name">${filename}.${iconMap[filename]}</span>
-                <div class="tab-close" onclick="closeTab(event, '${filename}')">×</div>
-            `;
-            tab.onclick = () => openFile(filename);
+            tab.innerHTML = '<svg class="tab-icon ' + iconMap[filename] + '" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2v12h12V4l-2-2H2zm10 10H4V4h6v2h2v6z"/></svg><span class="tab-name">' + filename + '.' + iconMap[filename] + '</span><div class="tab-close" onclick="closeTab(event, \'' + filename + '\')">×</div>';
+            tab.onclick = function() { openFile(filename); };
             tabsContainer.appendChild(tab);
         }
 
@@ -1264,11 +1257,11 @@
             event.stopPropagation();
             
             // Remove tab
-            const tab = document.querySelector(`.tab[data-file="${filename}"]`);
+            const tab = document.querySelector('.tab[data-file="' + filename + '"]');
             tab.remove();
             
             // Remove from open tabs
-            openTabs = openTabs.filter(f => f !== filename);
+            openTabs = openTabs.filter(function(f) { return f !== filename; });
             
             // If closing active tab, switch to another
             if (activeFile === filename && openTabs.length > 0) {
@@ -1276,45 +1269,13 @@
             } else if (openTabs.length === 0) {
                 // Show welcome screen
                 const editorContent = document.getElementById('editor-content');
-                editorContent.innerHTML = `
-                    <div class="welcome-screen" id="welcome-screen">
-                        <div class="welcome-logo">⚡</div>
-                        <div class="welcome-title">Stav Gershenko</div>
-                        <div class="welcome-subtitle">Software Engineer | 10+ years building reliable systems</div>
-                        
-                        <div class="welcome-section">
-                            <h3>Start</h3>
-                            <div class="welcome-shortcuts">
-                                <div class="shortcut" onclick="openFile('readme')">
-                                    <svg class="icon md" viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M2 2v12h12V4l-2-2H2zm10 10H4V4h6v2h2v6z"/>
-                                    </svg>
-                                    <span>Open README.md</span>
-                                </div>
-                                <div class="shortcut" onclick="openFile('about')">
-                                    <svg class="icon js" viewBox="0 0 16 16" fill="currentColor">
-                                        <rect x="1" y="1" width="14" height="14" rx="2"/>
-                                        <text x="8" y="12" text-anchor="middle" font-size="8" font-weight="bold" fill="#000">JS</text>
-                                    </svg>
-                                    <span>src/components/About.js</span>
-                                </div>
-                                <div class="shortcut" onclick="openFile('experience')">
-                                    <svg class="icon py" viewBox="0 0 16 16" fill="currentColor">
-                                        <rect x="1" y="1" width="14" height="14" rx="2"/>
-                                        <text x="8" y="12" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff">Py</text>
-                                    </svg>
-                                    <span>src/components/Experience.py</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                editorContent.innerHTML = '<div class="welcome-screen" id="welcome-screen"><div class="welcome-logo">⚡</div><div class="welcome-title">Stav Gershenko</div><div class="welcome-subtitle">Software Engineer | 10+ years building reliable systems</div><div class="welcome-section"><h3>Start</h3><div class="welcome-shortcuts"><div class="shortcut" onclick="openFile(\'readme\')"><svg class="icon md" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2v12h12V4l-2-2H2zm10 10H4V4h6v2h2v6z"/></svg><span>Open README.md</span></div><div class="shortcut" onclick="openFile(\'about\')"><svg class="icon js" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="14" height="14" rx="2"/><text x="8" y="12" text-anchor="middle" font-size="8" font-weight="bold" fill="#000">JS</text></svg><span>src/components/About.js</span></div><div class="shortcut" onclick="openFile(\'experience\')"><svg class="icon py" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="14" height="14" rx="2"/><text x="8" y="12" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff">Py</text></svg><span>src/components/Experience.py</span></div></div></div></div>';
                 activeFile = null;
             }
         }
 
         // Auto-expand main folder on load
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             toggleFolder('portfolio');
         });
     </script>
