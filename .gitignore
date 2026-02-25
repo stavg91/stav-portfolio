@@ -1,0 +1,9 @@
+# Ignore workspace files
+../.*
+!../.gitignore
+../clawe
+../clawhub
+../skills
+../logs
+../memory
+../package-lock.json
